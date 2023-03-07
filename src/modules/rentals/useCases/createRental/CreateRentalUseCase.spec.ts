@@ -1,3 +1,4 @@
+import { CarsRepository } from '@modules/cars/infra/typeorm/repositories/CarsRepository';
 import { RentalsRepositoryInMemory } from '@modules/rentals/repositories/in-memory/RentalsRepositoryInMemory';
 import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayjsDateProvider';
 import dayjs from 'dayjs';
@@ -7,14 +8,17 @@ import { CreateRentalUseCase } from './CreateRentalUseCase';
 let createRentalUseCase: CreateRentalUseCase;
 let rentalsRepositoryInMemory: RentalsRepositoryInMemory;
 let dateProvider: DayjsDateProvider;
+let carsRepository: CarsRepository;
 describe('Create Rental', () => {
     const dayAdd24Hours = dayjs().add(1, 'day').toDate();
     beforeEach(() => {
         rentalsRepositoryInMemory = new RentalsRepositoryInMemory();
         dateProvider = new DayjsDateProvider();
+        carsRepository = new CarsRepository();
         createRentalUseCase = new CreateRentalUseCase(
             rentalsRepositoryInMemory,
             dateProvider,
+            carsRepository,
         );
     });
 
