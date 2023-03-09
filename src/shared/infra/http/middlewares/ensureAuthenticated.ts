@@ -26,7 +26,7 @@ async function ensureAuthenticated(
         /* For now it will be able to get the refresh token instead token itself */
         const { sub: user_id } = verify(
             tokenCode,
-            auth.expires_in_refresh_token,
+            auth.secret_refresh_token,
         ) as IPayload;
 
         const user = await userTokensRepository.findByUserIdAndRefreshToken(

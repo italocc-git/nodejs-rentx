@@ -10,7 +10,7 @@ class ListRentalsByUserController {
             ListRentalsByUserUseCase,
         );
 
-        const rentals = listRentalsByUserUseCase.execute(user_id);
+        const rentals = await listRentalsByUserUseCase.execute(user_id);
 
         return response.json(rentals);
     }
