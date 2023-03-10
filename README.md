@@ -1,8 +1,29 @@
-# Cadastro de carro
+# Rentx
+
+[![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://github.com/italocc-git/nodejs-rentx/blob/main/LICENSE)
+
+# Sobre o projeto
+API de aluguel de carros, desenvolvida durante o Ignite de NodeJS da Rocketseat.
+
+A Aplicação consiste em gerenciar um sistema de aluguel de carros, onde é possível realizar o aluguel de uma ou mais diárias para o veículo selecionado
+pelo usuário cadastrado. Aplicação possui os seguintes principais recursos : Cadastramento e Listagem de carros por categorias e especificações, autenticação e cadastro dos usuários, recuperação de senha via e-mail, gerenciamento de aluguel de carros e acionamento de multa automático após devolução fora do prazo.
+
+# Tecnologias utilizadas
+
+ <li> Express </li>
+ <li> Bcryptjs / jsonwebtoken </li>
+ <li> multer  </li>
+ <li> Dayjs </li>
+ <li> Handlebars </li>
+ <li> Jest/ Supertest </li>
+ <li> Swagger-ui-express </li>
+
+# Requisitos Funcionais , Não funcionais e Regras de negócio
+
+## Cadastro de carro
 
 **RF**
 - Deve ser possível cadastrar um novo carro.
-
 
 **RN** 
 - Não deve ser possível cadastrar um carro com uma placa já existente.
@@ -94,3 +115,61 @@
 **RN**
 - O usuário precisa informar uma nova senha
 - O link enviado para a recuperação deve expirar em 3 horas
+
+ # Como executar o projeto (Siga as orientações na ordem)
+ 
+ Pré-requisitos: npm / yarn , Docker
+
+
+### Clonar repositório
+```
+$ git clone https://github.com/italocc-git/nodejs-rentx.git
+```
+
+### Entrar na pasta do projeto rentx
+```
+$ cd rentx
+```
+
+### Instalar dependências
+```
+$ yarn install / npm install
+```
+
+### Configurando Banco de dados
+A aplicação usa dois banco de dados: [Postgres](https://www.postgresql.org/) e [Redis](https://redis.io/). Para a configuração mais rápida é recomendado usar [docker-compose](https://docs.docker.com/compose/), você só precisa fazer o up de todos os serviços:
+```
+$ docker-compose up -d
+```
+
+### Migrations
+Antes de rodar a aplicação :
+
+```
+$ yarn typeorm migration:run
+```
+> Veja mais informações sobre [TypeORM Migrations](https://typeorm.io/#/migrations).
+
+### `.env`
+Neste arquivo, você deve configurar sua conexão do banco de dados Redis e Postgres, JWT, email, sentry, storage e configurações de AWS (caso seja necessário).
+Renomeie o `.env.example` no diretório raiz para `.env` e então atualize com suas configurações.
+
+### Rodando o projeto
+
+```
+yarn server / npm run server
+```
+
+### Rodando os testes
+```
+yarn test / npm run test
+```
+
+### Coverage report
+Você pode ver o coverage report dentro de `coverage`. Ele é criado automaticamente após a execução dos testes.
+
+# Autor
+
+Italo Costa Cavalcante
+
+https://www.linkedin.com/in/italo-costa-cavalcante/
